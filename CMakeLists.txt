@@ -12,6 +12,8 @@ add_compile_definitions(_GNU_SOURCE)
 add_compile_definitions(_FORTIFY_SOURCE=2)
 add_compile_definitions(_FILE_OFFSET_BITS=64)
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 find_package(Git)
 if(EXISTS "${CMAKE_SOURCE_DIR}/version_override.cmake")
 	include("${CMAKE_SOURCE_DIR}/version_override.cmake")

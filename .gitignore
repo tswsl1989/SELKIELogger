@@ -1,5 +1,9 @@
 *.pdf
+*.ini
 
+compile_commands.json
+
+.cache/
 build/
 env/
 *.egg-info/
