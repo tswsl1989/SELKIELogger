@@ -48,15 +48,19 @@
 int main(int argc, char *argv[]) {
 	program_state state = {0};
 	state.verbose = 1;
+	bool showIndex = false;
 
-	char *usage = "Usage: %1$s [-v] datfile\n"
+	char *usage = "Usage: %1$s [-v] [-t] datfile\n"
 		      "\nVersion: " GIT_VERSION_STRING "\n";
 
 	opterr = 0; // Handle errors ourselves
 	int go = 0;
 	bool doUsage = false;
-	while ((go = getopt(argc, argv, "v")) != -1) {
+	while ((go = getopt(argc, argv, "vt")) != -1) {
 		switch (go) {
+			case 't':
+				showIndex = true;
+				break;
 			case 'v':
 				state.verbose++;
 				break;
@@ -108,7 +112,9 @@ int main(int argc, char *argv[]) {
 		msgCount++;
 		if (tmp.type >= 0x03 || state.verbose > 1) {
 			char *msgstring = msg_to_string(&tmp);
-			if (msgstring) { fprintf(stdout, "%s\n", msgstring); }
+			if (msgstring) {
+				if (showIndex) {fprintf(stdout, "%012d ", msgCount); }
+				fprintf(stdout, "%s\n", msgstring); }
 			free(msgstring);
 		}
 		msg_destroy(&tmp);
