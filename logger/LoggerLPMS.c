@@ -289,8 +289,9 @@ void *lpms_logging(void *ptargs) {
 					continue;
 				}
 				if (lpms_imu_set_timestamp(m, &d)) {
+					// Internal timestamp is in 500ths, double to get milliseconds
 					msg_t *ts = msg_new_timestamp(lpmsInfo->sourceNum,
-					                              SLCHAN_TSTAMP, d.timestamp);
+					                              SLCHAN_TSTAMP, d.timestamp * 2);
 					if (!queue_push(args->logQ, ts)) {
 						log_error(
 							args->pstate,
