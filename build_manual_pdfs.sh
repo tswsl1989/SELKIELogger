@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 mkdir -p "pdfs/"
 for i in docs/manual/*.md; do
