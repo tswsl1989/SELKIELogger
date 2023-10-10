@@ -22,5 +22,5 @@ set(CPACK_COMPONENT_LOGGER_DESCRIPTION "Main data recorder program")
 set(CPACK_COMPONENT_LOGGER_DEPENDS Base GPS NMEA MP I2C)
 
 if (CODE_COVERAGE)
-	target_code_coverage(Logger)
+	target_code_coverage(Logger AUTO ALL PRE_ARGS "bash" "${PROJECT_SOURCE_DIR}/tests/test-logger.sh")
 endif()

@@ -62,12 +62,13 @@ cpack_add_component_group(devdocs DISPLAY_NAME "Development documentation")
 cpack_add_component_group(utils DISPLAY_NAME "Utilities")
 cpack_add_component_group(extras DISPLAY_NAME "Test and development utilities")
 
+enable_testing()
+
 add_subdirectory(library)
 add_subdirectory(ext)
 add_subdirectory(logger)
 add_subdirectory(utils)
 
-enable_testing()
 add_subdirectory(tests)
 
 add_subdirectory(docs)
