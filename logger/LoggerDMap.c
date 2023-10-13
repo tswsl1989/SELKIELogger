@@ -16,7 +16,7 @@
  *  You should have received a copy of the GNU General Public License along
  *  with this SELKIELogger product.
  *  If not, see <http://www.gnu.org/licenses/>.
-*/
+ */
 
 #include "LoggerDMap.h"
 
@@ -42,6 +42,7 @@ struct dmap dmap[] = {
 	{"N2K", &n2k_getCallbacks, &n2k_parseConfig},
 	{"MP", &mp_getCallbacks, &mp_parseConfig},
 	{"MQTT", &mqtt_getCallbacks, &mqtt_parseConfig},
+	{"VICTRON", &mqtt_getCallbacks, &mqtt_parseConfig},
 	{"SL", &mp_getCallbacks, &mp_parseConfig},
 	{"SERIAL", &rx_getCallbacks, &rx_parseConfig},
 	{"NET", &net_getCallbacks, &net_parseConfig},

@@ -16,7 +16,7 @@
  *  You should have received a copy of the GNU General Public License along
  *  with this SELKIELogger product.
  *  If not, see <http://www.gnu.org/licenses/>.
-*/
+ */
 
 #include "Logger.h"
 
@@ -289,9 +289,11 @@ void *lpms_logging(void *ptargs) {
 					continue;
 				}
 				if (lpms_imu_set_timestamp(m, &d)) {
-					// Internal timestamp is in 500ths, double to get milliseconds
-					msg_t *ts = msg_new_timestamp(lpmsInfo->sourceNum,
-					                              SLCHAN_TSTAMP, d.timestamp * 2);
+					// Internal timestamp is in 500ths, double to get
+					// milliseconds
+					msg_t *ts =
+						msg_new_timestamp(lpmsInfo->sourceNum,
+					                          SLCHAN_TSTAMP, d.timestamp * 2);
 					if (!queue_push(args->logQ, ts)) {
 						log_error(
 							args->pstate,
@@ -641,7 +643,7 @@ bool lpms_parseConfig(log_thread_args_t *lta, config_section *s) {
 			default:
 				log_error(
 					lta->pstate,
-					"[LPMS:%s] Invalid minimum poll frequency (%d is not greater than zero)",
+					"[LPMS:%s] Invalid minimum poll frequency (%dHz is not supported)",
 					lta->tag, lpmsInfo->pollFreq);
 				free(lpmsInfo);
 				return false;
